@@ -6,16 +6,16 @@
 */
 
 // Attach a media stream to an element.
-attachMediaStream = function (element, stream) {
+attachMediaStream = async function (element, stream) {
   console.log('Attaching media stream')
   element.srcObject = stream
-  element.play()
+  await element.play()
 }
 
-reattachMediaStream = function (to, from) {
+reattachMediaStream = async function (to, from) {
   console.log('Reattaching media stream')
   to.srcObject = from.srcObject
-  to.play()
+  await to.play()
 }
 
 var cfg = {'iceServers': [{urls: 'stun:23.21.150.121'}]},
@@ -55,7 +55,7 @@ $('#joinBtn').click(function () {
   navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
-    video.play()
+    await video.play()
     pc2.addStream(stream)
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
@@ -167,12 +167,12 @@ function setupDC1 () {
   } catch (e) { console.warn('No data channel (pc1)', e); }
 }
 
-function createLocalOffer () {
+async function createLocalOffer () {
   console.log('video1')
   navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
-    video.play()
+    await video.play()
     pc1.addStream(stream)
     console.log(stream)
     console.log('adding stream to pc1')
