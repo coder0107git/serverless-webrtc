@@ -5,3 +5,7 @@ video {
    max-width:500px;
    height:auto;
 }
+
+.as-console-wrapper {
+   z-index: 1000000000000000000000000000000 !important;
+}
