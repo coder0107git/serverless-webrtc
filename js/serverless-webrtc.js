@@ -8,14 +8,14 @@
 // Attach a media stream to an element.
 attachMediaStream = async function (element, stream) {
   console.log('Attaching media stream')
-  element.srcObject = stream
-  await element.play()
+  //element.srcObject = stream
+  //await element.play()
 }
 
 reattachMediaStream = async function (to, from) {
   console.log('Reattaching media stream')
-  to.srcObject = from.srcObject
-  await to.play()
+  //to.srcObject = from.srcObject
+  //await to.play()
 }
 
 var cfg = {'iceServers': [{urls: 'stun:23.21.150.121'}]},
@@ -179,7 +179,7 @@ function createLocalOffer () {
     setupDC1()
     pc1.createOffer(function (desc) {
       pc1.setLocalDescription(desc, function () {}, function () {})
-      console.log('created local offer', desc)
+      console.log('created local offer', desc, JSON.stringify(desc))
     },
     function () { console.warn("Couldn't create offer") },
     sdpConstraints)
