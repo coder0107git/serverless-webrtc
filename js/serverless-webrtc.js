@@ -283,7 +283,7 @@ function handleOfferFromPC1 (offerDesc) {
   pc2.setRemoteDescription(offerDesc)
   pc2.createAnswer(function (answerDesc) {
     writeToChatLog('Created local answer', 'text-success')
-    console.log('Created local answer: ', answerDesc)
+    console.log('Created local answer: ', JSON.stringify(answerDesc))
     pc2.setLocalDescription(answerDesc)
   },
   function () { console.warn("Couldn't create offer") },
