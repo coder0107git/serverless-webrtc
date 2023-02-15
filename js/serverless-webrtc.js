@@ -167,9 +167,9 @@ function setupDC1 () {
   } catch (e) { console.warn('No data channel (pc1)', e); }
 }
 
-async function createLocalOffer () {
+function createLocalOffer () {
   console.log('video1')
-  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
+  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(async function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
     await video.play()
