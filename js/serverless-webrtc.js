@@ -52,14 +52,14 @@ $('#createBtn').click(function () {
 })
 
 $('#joinBtn').click(function () {
-  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(async function (stream) {
+  /*navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(async function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
     await video.play()
     pc2.addStream(stream)
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
-});
+});*/
   $('#createOrJoin').modal('hide')
   $('#getRemoteOffer').modal('show')
 })
@@ -169,12 +169,12 @@ function setupDC1 () {
 
 function createLocalOffer () {
   console.log('video1')
-  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(async function (stream) {
+  /*navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(async function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
     await video.play()
     pc1.addStream(stream)
-    console.log(stream)
+    console.log(stream)*/
     console.log('adding stream to pc1')
     setupDC1()
     pc1.createOffer(function (desc) {
@@ -183,9 +183,9 @@ function createLocalOffer () {
     },
     function () { console.warn("Couldn't create offer") },
     sdpConstraints)
-}).catch(function (error) {
+/*}).catch(function (error) {
   console.log('Error adding stream to pc1: ' + error)
-});
+});*/
 }
 
 pc1.onicecandidate = function (e) {
